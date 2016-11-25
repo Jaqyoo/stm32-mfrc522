@@ -4,9 +4,13 @@
 
 int main()
 {
-
+	char a;
 	uartInit();
 	printf("hello.\n");
 
-	while(1);
+	while(1)
+	{
+		a = getchar();
+		putchar(a);
+	}
 }

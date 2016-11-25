@@ -37,6 +37,6 @@ int sendchar(int ch)
 
 int getkey(void)
 {
-	while (!(USART1->SR & USART_FLAG_RXNE));
-	return ((int)(USART1->DR & 0x1FF));
+	while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
+	return ((int)USART_ReceiveData(USART1));
 }

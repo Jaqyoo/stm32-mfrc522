@@ -2,6 +2,7 @@
 ".\objects\main.o"
 ".\objects\uart.o"
 ".\objects\retarget.o"
+".\objects\pcd_hal.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_rcc.o"
 ".\objects\stm32f10x_spi.o"
