@@ -76,11 +76,11 @@ void PCD_CS_Dis(void)
 }
 
 
-uint8_t PCD_Hal_W(uint8_t value)
+uint8_t PCD_HAL_W(uint8_t value)
 {
 	uint8_t ret;
 	PCD_CS_En();
-	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET); // 
+	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET); 
 	SPI_I2S_SendData(SPI1, value);
 	while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET);
 	ret = SPI_I2S_ReceiveData(SPI1);
@@ -88,7 +88,19 @@ uint8_t PCD_Hal_W(uint8_t value)
 	return ret;
 }
 
-uint8_t PCD_Hal_R(uint8_t value)
+uint8_t PCD_HAL_R(void)
 {
-	return (PCD_Hal_W(0x00));
+	return PCD_HAL_W(0x00);
+}
+
+void PCD_WReg(uint8_t addr, uint8_t value)
+{
+	PCD_HAL_W(addr<<1);
+	PCD_HAL_W(value);
+}
+
+uint8_t PCD_RReg(uint8_t addr)
+{
+	PCD_HAL_W((addr<<1)|0x80);
+	return(PCD_HAL_R());
 }
