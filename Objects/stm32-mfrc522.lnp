@@ -1,0 +1,15 @@
+--cpu Cortex-M3
+".\objects\main.o"
+".\objects\uart.o"
+".\objects\retarget.o"
+".\objects\misc.o"
+".\objects\stm32f10x_rcc.o"
+".\objects\stm32f10x_spi.o"
+".\objects\stm32f10x_usart.o"
+".\objects\startup_stm32f10x_md.o"
+".\objects\system_stm32f10x.o"
+".\objects\stm32f10x_gpio.o"
+--strict --scatter ".\Objects\stm32-mfrc522.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\stm32-mfrc522.map" -o .\Objects\stm32-mfrc522.axf
