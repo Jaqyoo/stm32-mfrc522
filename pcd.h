@@ -3,6 +3,12 @@
 
 #include "pcd_hal.h"
 #include "stdio.h"
+#include "debug.h"
+
+//PCD_Status return
+#define PCD_OK                          0
+#define PCD_NOTAGERR                    (-1)
+#define PCD_ERR                         (-2)
 
 /* Define PCD commands */
 // PAGE 0
@@ -85,6 +91,6 @@ void PCD_AntennaOn(void);
 void PCD_AntennaOff(void);
 
 void PCD_Init(char class);
-void PCD_Reset(void);
+uint8_t PCD_Reset(void);
 
 #endif

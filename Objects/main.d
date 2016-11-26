@@ -17,3 +17,5 @@
 .\objects\main.o: uart.h
 .\objects\main.o: pcd_hal.h
 .\objects\main.o: pcd.h
+.\objects\main.o: debug.h
+.\objects\main.o: delay.h
