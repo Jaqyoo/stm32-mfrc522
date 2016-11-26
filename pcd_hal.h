@@ -13,7 +13,5 @@ void PCD_CS_Dis(void);
 uint8_t PCD_HAL_W(uint8_t value);
 uint8_t PCD_HAL_R(void);
 
-void PCD_WReg(uint8_t addr, uint8_t value);
-uint8_t PCD_RReg(uint8_t addr);
 
 #endif

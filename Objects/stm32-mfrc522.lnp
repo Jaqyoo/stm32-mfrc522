@@ -3,6 +3,7 @@
 ".\objects\uart.o"
 ".\objects\retarget.o"
 ".\objects\pcd_hal.o"
+".\objects\pcd.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_gpio.o"
 ".\objects\stm32f10x_rcc.o"

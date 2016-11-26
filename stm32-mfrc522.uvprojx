@@ -436,6 +436,11 @@
               <FileType>1</FileType>
               <FilePath>.\pcd_hal.c</FilePath>
             </File>
+            <File>
+              <FileName>pcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\pcd.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

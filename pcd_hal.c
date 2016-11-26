@@ -93,14 +93,3 @@ uint8_t PCD_HAL_R(void)
 	return PCD_HAL_W(0x00);
 }
 
-void PCD_WReg(uint8_t addr, uint8_t value)
-{
-	PCD_HAL_W(addr<<1);
-	PCD_HAL_W(value);
-}
-
-uint8_t PCD_RReg(uint8_t addr)
-{
-	PCD_HAL_W((addr<<1)|0x80);
-	return(PCD_HAL_R());
-}
