@@ -7,22 +7,32 @@
 int main()
 {
 	char a;
+	char i;
 	uartInit();
 	PCD_Hal_Init();
 	printf("hello.\n");
 	
-	PCD_WReg(0x02, 0x40);
-	a = PCD_RReg(0x02);
-	printf("Read Reg: %x.\n", a);
-	
-	PCD_ClearBits(0x02, 0x40);
-	a = PCD_RReg(0x02);
-	printf("ClearBits: %x.\n", a);
-	
-	PCD_SetBits(0x02, 0x40);
-	a = PCD_RReg(0x02);
-	printf("SetBits: %x.\n", a);
+	for(i=0;i<0xff;i++)
+	{
+		printf("%x\t", i);
+		PCD_WReg(0x02, i);
+		a = PCD_RReg(0x02);
+		printf("%x\n", a);
+	}
 
+	/*
+	PCD_ClearBits(0x02, 0x40);
+	
+	PCD_SetBits(0x02, 0xFF);
+	
+	PCD_AntennaOn();
+	a = PCD_RReg(TxControlReg);
+	printf("AntennaOn: %x.\n", a);
+	
+	PCD_AntennaOff();
+	a = PCD_RReg(TxControlReg);
+	printf("AntennaOff: %x.\n", a);
+*/
 	while(1)
 	{
 		a = getchar();
