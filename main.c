@@ -8,10 +8,10 @@
 
 int main()
 {
-	char a;
-	char r,i;
+	char s[255];
 	uartInit();
-	PCD_Hal_Init();
+	PCD_Init();
+	PCD_ConfigIsoType('A');
 	
 	#ifdef DEBUG_MAIN
 	printf("hello.\n");
@@ -20,23 +20,12 @@ int main()
 	printf("stop delay\n");
 	#endif
 	
-	PCD_AntennaOn();
-	#ifdef DEBUG_MAIN
-	a = PCD_RReg(TxControlReg);
-	printf("AntennaOn: %x.\n", a);
-	#endif
-	
-	PCD_AntennaOff();
-	#ifdef DEBUG_MAIN
-	a = PCD_RReg(TxControlReg);
-	printf("AntennaOff: %x.\n", a);
-	#endif
 
-	PCD_Reset();
 
 	while(1)
 	{
-		a = getchar();
-		putchar(a);
+		printf("scaning:\n");
+		scanf("%s", s);
+		printf("%s\n", s);
 	}
 }

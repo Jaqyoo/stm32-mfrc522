@@ -90,7 +90,8 @@ void PCD_SetBits(uint8_t addr, uint8_t mask);
 void PCD_AntennaOn(void);
 void PCD_AntennaOff(void);
 
-void PCD_Init(char class);
+uint8_t PCD_Init(void);
 uint8_t PCD_Reset(void);
+uint8_t PCD_ConfigIsoType(char type);
 
 #endif
