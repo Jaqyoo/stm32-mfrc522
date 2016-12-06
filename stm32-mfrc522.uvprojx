@@ -173,12 +173,12 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>0</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <Capability>1</Capability>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -446,7 +446,20 @@
               <FileType>1</FileType>
               <FilePath>.\delay.c</FilePath>
             </File>
+            <File>
+              <FileName>picc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\picc.c</FilePath>
+            </File>
+            <File>
+              <FileName>picc_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\picc_app.c</FilePath>
+            </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>Picc_App</GroupName>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>

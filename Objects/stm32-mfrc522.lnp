@@ -5,6 +5,8 @@
 ".\objects\pcd_hal.o"
 ".\objects\pcd.o"
 ".\objects\delay.o"
+".\objects\picc.o"
+".\objects\picc_app.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_gpio.o"
 ".\objects\stm32f10x_rcc.o"

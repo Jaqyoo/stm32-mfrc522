@@ -4,13 +4,14 @@
 #include "pcd_hal.h"
 #include "stdio.h"
 #include "debug.h"
+#include "delay.h"
 
 //PCD_Status return
 #define PCD_OK                          0
-#define PCD_NOTAGERR                    (-1)
-#define PCD_ERR                         (-2)
+#define PCD_NOTAGERR                    1
+#define PCD_ERR                         2
 
-/* Define PCD commands */
+/* Define PCD Register */
 // PAGE 0
 #define     RFU00                 0x00    
 #define     CommandReg            0x01    
@@ -79,6 +80,21 @@
 #define     RFU3D                 0x3D   
 #define     RFU3E                 0x3E   
 #define     RFU3F		  						0x3F
+/* end of define PCD Register */
+
+/* Define PCD commands*/
+#define PCD_IDLE              0x00
+#define PCD_Mem								0x01
+#define PCD_GenerateRandomID	0x02
+#define PCD_CALCCRC           0x03 
+#define PCD_TRANSMIT          0x04
+#define PCD_NoCmdChange				0x07
+#define PCD_RECEIVE           0x08
+#define PCD_TRANSCEIVE        0x0C
+#define PCD_UNUSED						0x0D
+#define PCD_AUTHENT           0x0E 
+#define PCD_RESETPHASE        0x0F              
+             
 /* end of define PCD commands */
 
 void PCD_WReg(uint8_t addr, uint8_t value);
@@ -93,5 +109,7 @@ void PCD_AntennaOff(void);
 uint8_t PCD_Init(void);
 uint8_t PCD_Reset(void);
 uint8_t PCD_ConfigIsoType(char type);
+
+void PCD_CalCRC(uint8_t *pInData, uint8_t len, uint8_t *pOutData);
 
 #endif

@@ -59,12 +59,12 @@ uint8_t PCD_Reset(void)
 	PCD_Hal_Open();	
 	
 	//SoftReset 
-	PCD_WReg(CommandReg, 0x0F);	
+	PCD_WReg(CommandReg, PCD_RESETPHASE);	
 	delay_ms(50);
 	
 	//transmitter can only be started if an RF field is generated.
 	//&& defines the preset value for the CRC coprocessor for the CalcCRC command
-	//the preset value is FFFF
+	//the preset value is 0x6363
 	PCD_WReg(ModeReg, 0x3d);
 	#ifdef DEBUG_RESET
 	if(PCD_RReg(ModeReg) != 0x3d){
@@ -184,10 +184,37 @@ uint8_t PCD_ConfigIsoType(char type)
 		}
 		#endif
 		
+		PCD_WReg(WaterLevelReg, 0x3f);
+		#ifdef DEBUG_RESET
+		if(PCD_RReg(WaterLevelReg) != 0x3f){
+			printf("WaterLevelReg error.\n");
+			return PCD_ERR;
+		}
+		#endif
+		
 		delay_ms(10);
 		PCD_AntennaOn();
 	}	else {return PCD_NOTAGERR;}
 	
 	return PCD_OK;
 	
+}
+
+void PCD_CalCRC(uint8_t *pInData, uint8_t len, uint8_t *pOutData)
+{
+	uint8_t i,n;
+	PCD_ClearBits(DivIrqReg, 0x04);
+	PCD_WReg(CommandReg, PCD_IDLE);
+	PCD_SetBits(FIFOLevelReg, 0x80);
+	for(i=0; i<len; i++)
+		PCD_WReg(FIFODataReg, *(pInData+i));
+	
+	PCD_WReg(CommandReg, PCD_CALCCRC);
+	i=0xff;
+	do{
+		n=PCD_RReg(DivIrqReg);
+		i--;
+	} while((i!=0) && !(n&0x04));
+	pOutData[0] = PCD_RReg(CRCResultRegL);
+	pOutData[1] = PCD_RReg(CRCResultRegM);
 }
