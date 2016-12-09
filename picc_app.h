@@ -14,6 +14,6 @@
 
 extern uint8_t RevBuffer[30]; 
 
-PiccStatus_t PICC_UDF_Cmd();
+PiccStatus_t PICC_UDF_Cmd(void);
 
 #endif

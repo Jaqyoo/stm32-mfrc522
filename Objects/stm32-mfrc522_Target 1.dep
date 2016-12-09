@@ -1,5 +1,5 @@
 Dependencies for Project 'stm32-mfrc522', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x58467D2C)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-I C:\Users\EE408\Desktop\EE408\stm32-mfrc522\RTE-I C:\Users\EE408\Desktop\EE408\stm32-mfrc522\RTE\Device\STM32F103C8-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="516" -D_RTE_ -DSTM32F10X_MD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x584A58D0)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-I C:\Users\EE408\Desktop\EE408\stm32-mfrc522\RTE-I C:\Users\EE408\Desktop\EE408\stm32-mfrc522\RTE\Device\STM32F103C8-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="516" -D_RTE_ -DSTM32F10X_MD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA0D60)
 I (C:\Users\EE408\Desktop\EE408\stm32-mfrc522\RTE\RTE_Components.h)(0x583FC5DB)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cm3.h)(0x55093C04)
@@ -19,9 +19,9 @@ I (pcd_hal.h)(0x583FBD8A)
 I (pcd.h)(0x583A4CAB)
 I (debug.h)(0x583FBD8A)
 I (delay.h)(0x583FBD8A)
-I (picc.h)(0x58422DB5)
+I (picc.h)(0x5847A85F)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x55AEF5F2)
-I (picc_app.h)(0x58467C25)
+I (picc_app.h)(0x5847A441)
 F (.\uart.c)(0x583FBD8A)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-I C:\Users\EE408\Desktop\EE408\stm32-mfrc522\RTE-I C:\Users\EE408\Desktop\EE408\stm32-mfrc522\RTE\Device\STM32F103C8-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="516" -D_RTE_ -DSTM32F10X_MD-o .\objects\uart.o --omf_browse .\objects\uart.crf --depend .\objects\uart.d)
 I (uart.h)(0x583FBD8A)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA0D60)
@@ -93,8 +93,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm3
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
-F (.\picc.c)(0x58467908)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-I C:\Users\EE408\Desktop\EE408\stm32-mfrc522\RTE-I C:\Users\EE408\Desktop\EE408\stm32-mfrc522\RTE\Device\STM32F103C8-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="516" -D_RTE_ -DSTM32F10X_MD-o .\objects\picc.o --omf_browse .\objects\picc.crf --depend .\objects\picc.d)
-I (picc.h)(0x58422DB5)
+F (.\picc.c)(0x584A54BD)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-I C:\Users\EE408\Desktop\EE408\stm32-mfrc522\RTE-I C:\Users\EE408\Desktop\EE408\stm32-mfrc522\RTE\Device\STM32F103C8-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="516" -D_RTE_ -DSTM32F10X_MD-o .\objects\picc.o --omf_browse .\objects\picc.crf --depend .\objects\picc.d)
+I (picc.h)(0x5847A85F)
 I (pcd.h)(0x583A4CAB)
 I (pcd_hal.h)(0x583FBD8A)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA0D60)
@@ -115,8 +115,8 @@ I (debug.h)(0x583FBD8A)
 I (delay.h)(0x583FBD8A)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x55AEF5F2)
 F (.\picc_app.c)(0x58467D8F)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-I C:\Users\EE408\Desktop\EE408\stm32-mfrc522\RTE-I C:\Users\EE408\Desktop\EE408\stm32-mfrc522\RTE\Device\STM32F103C8-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="516" -D_RTE_ -DSTM32F10X_MD-o .\objects\picc_app.o --omf_browse .\objects\picc_app.crf --depend .\objects\picc_app.d)
-I (picc_app.h)(0x58467C25)
-I (picc.h)(0x58422DB5)
+I (picc_app.h)(0x5847A441)
+I (picc.h)(0x5847A85F)
 I (pcd.h)(0x583A4CAB)
 I (pcd_hal.h)(0x583FBD8A)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include\stm32f10x.h)(0x53BA0D60)

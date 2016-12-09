@@ -22,6 +22,12 @@
 #define PICC_NOTAGERR		1
 #define PICC_ERR				2
 
+#define PICC_REQ_ISO		0X52
+#define PICC_REQ_ALL		0x26
+
+#define PICC_AUTH_A			0X60
+#define PICC_AUTH_B			0X61
+
 
 
 typedef uint8_t PiccStatus_t;

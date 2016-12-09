@@ -115,16 +115,17 @@ PiccStatus_t PICC_Request(uint8_t req_code, uint8_t *pTagType)
 	comBuf[0] = req_code;
 	
 	status = PICC_Comm(PCD_TRANSCEIVE, comBuf, 1, comBuf, &unLen);
-	//printf("unLen = %d\n", unLen);
 	if((status == PICC_OK)
 		//&& (unLen == 0x10)
 	)	{
+		
 		pTagType[0]		= comBuf[0];
+		//printf("status = ok\n");
 		pTagType[1] 	= comBuf[1];
 	}
-	else 
+	else {
 		status = PICC_ERR;
-	
+	}
 	return status;
 }
 
@@ -200,7 +201,7 @@ PiccStatus_t PICC_Select(uint8_t *pSnr)
 *				0x60:	Auth key A
 *				0x61: Auth key B
 *		addr[IN]
-*		pKey[IN]
+*		pKey[IN]: 6-byte Key
 *		pSnr[IN]
 */
 PiccStatus_t PICC_AuthState(uint8_t auth_mode, uint8_t addr, uint8_t *pKey, uint8_t *pSnr)
