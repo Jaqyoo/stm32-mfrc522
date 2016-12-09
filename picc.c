@@ -277,7 +277,11 @@ PiccStatus_t PICC_Read(uint8_t addr, uint8_t *pData)
 	PCD_CalCRC(comBuf, 2, &comBuf[2]);
 	
 	status = PICC_Comm(PCD_TRANSCEIVE, comBuf, 4, comBuf, &unLen);
-	if((status==PICC_OK) && (unLen==0x90))
+	//printf("(unlen = %d)", unLen);
+	
+	if((status==PICC_OK) 
+		//&& (unLen==0x90)
+	)
 		for(i=0; i<16; i++)
 			*(pData+i) = comBuf[i];
 	else
