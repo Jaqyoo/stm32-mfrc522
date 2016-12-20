@@ -62,10 +62,12 @@ PiccStatus_t PICC_Comm(uint8_t PcdCommand, uint8_t *pInData, uint8_t inLen, uint
 	
 	PCD_ClearBits(BitFramingReg, 0x80);	//stop the transmission of data
 	
+	//printf("i=%d, n=%x\n", i, n);
 	if(i!=0){
 		valid = PCD_RReg(ErrorReg);
 		if(!(valid&0x1B)){	//not BufferOvfl, CollErr, ParityErr or ProtocolErr
 			status = PICC_OK;
+			//printf("!(valid&0x1b)\n");
 			
 			if(n & irqEn & 0x01)	//not timer interrupt
 				status = PICC_NOTAGERR;
@@ -120,11 +122,12 @@ PiccStatus_t PICC_Request(uint8_t req_code, uint8_t *pTagType)
 	)	{
 		
 		pTagType[0]		= comBuf[0];
-		//printf("status = ok\n");
+		//printf("request ok\n");
 		pTagType[1] 	= comBuf[1];
 	}
 	else {
 		status = PICC_ERR;
+		//printf("request err\n");
 	}
 	return status;
 }
@@ -241,10 +244,10 @@ PiccStatus_t PICC_Write(uint8_t addr, uint8_t *pData)
 	PCD_CalCRC(comBuf, 2, &comBuf[2]);
 	
 	status = PICC_Comm(PCD_TRANSCEIVE, comBuf, 4, comBuf, &unLen);
-		printf("unlen = %d\n", unLen);
-		printf("combuf[0] = %x\n", comBuf[0]);
 	
-	if((status!=PICC_OK) || (unLen!=4) || ((comBuf[0]&0x0f)!=0x0a))
+	if((status!=PICC_OK)
+//		|| (unLen!=4) || ((comBuf[0]&0x0f)!=0x0a)
+	)
 		status = PICC_ERR;
 	
 	if(status == PICC_OK){
@@ -304,4 +307,39 @@ PiccStatus_t PICC_Halt(void)
 	return status;
 }
 
+PiccStatus_t PICC_isNewCard(uint8_t pSnr[4], uint8_t oldSnr[4])
+{
+	uint8_t i;
+	for(i=0; i<4; i++)
+		if(pSnr[i] != oldSnr[i])	//not equal means new card
+			return PICC_OK;
+	return PICC_ERR;
+}
 
+PiccStatus_t PICC_SelectCard(uint8_t pSnr[4])
+{
+	uint8_t pTagType[2];
+	uint8_t i;
+	
+	if(PICC_Request(PICC_REQ_ALL, &pTagType[0]) == PICC_OK)
+		if(PICC_Anticoll(&pSnr[0]) == PICC_OK)
+			if(PICC_Select(pSnr) == PICC_OK)
+				return PICC_OK;
+	return PICC_ERR;
+}
+
+PiccStatus_t PICC_AppWrite(uint8_t *pSnr, uint8_t addr, uint8_t *key_a, uint8_t *key_b, uint8_t *pData)
+{
+	if(PICC_AuthState(PICC_AUTH_A, addr, key_a, pSnr) == PICC_OK
+		& PICC_AuthState(PICC_AUTH_B, addr, key_b, pSnr) == PICC_OK)
+		return PICC_Write(addr, pData);
+	else return PICC_ERR;
+}
+
+PiccStatus_t PICC_AppRead(uint8_t *pSnr, uint8_t addr, uint8_t *key_a, uint8_t *key_b, uint8_t *pData)
+{
+	if(PICC_AuthState(PICC_AUTH_A, addr, key_a, pSnr) == PICC_OK
+		& PICC_AuthState(PICC_AUTH_B, addr, key_b, pSnr) == PICC_OK)
+		return PICC_Read(addr, pData);
+	else return PICC_ERR;
+}

@@ -451,11 +451,6 @@
               <FileType>1</FileType>
               <FilePath>.\picc.c</FilePath>
             </File>
-            <File>
-              <FileName>picc_app.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\picc_app.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

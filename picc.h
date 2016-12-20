@@ -43,7 +43,9 @@ PiccStatus_t PICC_AuthState(uint8_t auth_mode, uint8_t addr, uint8_t *pKey, uint
 PiccStatus_t PICC_Write(uint8_t addr, uint8_t *pData);
 PiccStatus_t PICC_Read(uint8_t addr, uint8_t *pData);
 PiccStatus_t PICC_Halt(void);
-
-
+PiccStatus_t PICC_isNewCard(uint8_t pSnr[4], uint8_t oldSnr[4]);
+PiccStatus_t PICC_SelectCard(uint8_t pSnr[4]);
+PiccStatus_t PICC_AppWrite(uint8_t *pSnr, uint8_t addr, uint8_t *key_a, uint8_t *key_b, uint8_t *pData);
+PiccStatus_t PICC_AppRead(uint8_t *pSnr, uint8_t addr, uint8_t *key_a, uint8_t *key_b, uint8_t *pData);
 
 #endif

@@ -2,7 +2,7 @@
 
 void PCD_WReg(uint8_t addr, uint8_t value)
 {
-	delay_ms(2);
+	//delay_ms(2);
 	PCD_CS_En();
 	PCD_HAL_W(addr<<1);
 	PCD_HAL_W(value);
@@ -53,7 +53,6 @@ uint8_t PCD_Init(void)
 
 uint8_t PCD_Reset(void)
 {
-	int i;
 	PCD_Hal_Close();
 	delay_ms(10);
 	PCD_Hal_Open();	
@@ -66,26 +65,26 @@ uint8_t PCD_Reset(void)
 	//&& defines the preset value for the CRC coprocessor for the CalcCRC command
 	//the preset value is 0x6363
 	PCD_WReg(ModeReg, 0x3d);
-	#ifdef DEBUG_RESET
-	if(PCD_RReg(ModeReg) != 0x3d){
-		printf("ModeReg error.\n");
-		return PCD_ERR;
-	}
-	#endif
+//	#ifdef DEBUG_RESET
+//	if(PCD_RReg(ModeReg) != 0x3d){
+//		printf("ModeReg error.\n");
+//		return PCD_ERR;
+//	}
+//	#endif
 	
 	//Defines the 16-bit timer reload value.
 	PCD_WReg(TReloadRegL, 30);
 	PCD_WReg(TReloadRegH, 0);
-	#ifdef DEBUG_RESET
-	if(PCD_RReg(TReloadRegL) != 30){
-		printf("TReloadRegL error.\n");
-		return PCD_ERR;
-	}
-	if(PCD_RReg(TReloadRegH) != 0){
-		printf("TReloadRegH error.\n");
-		return PCD_ERR;
-	}
-	#endif
+//	#ifdef DEBUG_RESET
+//	if(PCD_RReg(TReloadRegL) != 30){
+//		printf("TReloadRegL error.\n");
+//		return PCD_ERR;
+//	}
+//	if(PCD_RReg(TReloadRegH) != 0){
+//		printf("TReloadRegH error.\n");
+//		return PCD_ERR;
+//	}
+//	#endif
 	
 	//timer starts automatically at the end of the transmission 
 	//in all communication modes at all speeds
@@ -95,26 +94,26 @@ uint8_t PCD_Reset(void)
 	//the last 4-bit of TModeReg is the higher 4-b-t of 12-bit TPrescalerReg
 	PCD_WReg(TModeReg, 0x8d);
 	PCD_WReg(TPrescalerReg, 0x3e);
-	#ifdef DEBUG_RESET
-	if(PCD_RReg(TModeReg) != 0x8d){
-		printf("TModeReg error.\n");
-		return PCD_ERR;
-	}
-	if(PCD_RReg(TPrescalerReg) != 0x3e){
-		printf("TPrescalerReg error.\n");
-		return PCD_ERR;
-	}
-	#endif	
+//	#ifdef DEBUG_RESET
+//	if(PCD_RReg(TModeReg) != 0x8d){
+//		printf("TModeReg error.\n");
+//		return PCD_ERR;
+//	}
+//	if(PCD_RReg(TPrescalerReg) != 0x3e){
+//		printf("TPrescalerReg error.\n");
+//		return PCD_ERR;
+//	}
+//	#endif	
 
 	//forces a 100% ASK modulation independent of the
 	//ModGsPReg register setting
 	PCD_WReg(TxASKReg, 0x40);
-	#ifdef DEBUG_RESET
-	if(PCD_RReg(TxASKReg) != 0x40){
-		printf("TxASKReg error.\n");
-		return PCD_ERR;
-	}
-	#endif
+//	#ifdef DEBUG_RESET
+//	if(PCD_RReg(TxASKReg) != 0x40){
+//		printf("TxASKReg error.\n");
+//		return PCD_ERR;
+//	}
+//	#endif
 	
 	return PCD_OK;
 }
@@ -128,13 +127,13 @@ uint8_t PCD_ConfigIsoType(char type)
 		PCD_ClearBits(Status2Reg, 0x08);
 		
 		//confirm ModeReg = 0x3d
-		PCD_WReg(ModeReg, 0x3d);
-		#ifdef DEBUG_RESET
-		if(PCD_RReg(ModeReg) != 0x3d){
-			printf("ModeReg error.\n");
-			return PCD_ERR;
-		}
-		#endif
+//		PCD_WReg(ModeReg, 0x3d);
+//		#ifdef DEBUG_RESET
+//		if(PCD_RReg(ModeReg) != 0x3d){
+//			printf("ModeReg error.\n");
+//			return PCD_ERR;
+//		}
+//		#endif
 		
 		//the higher 2-bit: selects the input of the contactless UART...
 		//modulated signal from the internal analog module
@@ -144,53 +143,53 @@ uint8_t PCD_ConfigIsoType(char type)
 		//the counter starts immediately after the external RF field ...
 		//is switch on
 		PCD_WReg(RxSelReg, 0x86);
-		#ifdef DEBUG_RESET
-		if(PCD_RReg(RxSelReg) != 0x86){
-			printf("RxSelReg error.\n");
-			return PCD_ERR;
-		}
-		#endif
+//		#ifdef DEBUG_RESET
+//		if(PCD_RReg(RxSelReg) != 0x86){
+//			printf("RxSelReg error.\n");
+//			return PCD_ERR;
+//		}
+//		#endif
 		
 		//defines the receiver's signal voltage gain factor = 48dB
 		PCD_WReg(RFCfgReg, 0x7f);
-		#ifdef DEBUG_RESET
-		if(PCD_RReg(RFCfgReg) != 0x7f){
-			printf("RFCfgReg error.\n");
-			return PCD_ERR;
-		}
-		#endif
+//		#ifdef DEBUG_RESET
+//		if(PCD_RReg(RFCfgReg) != 0x7f){
+//			printf("RFCfgReg error.\n");
+//			return PCD_ERR;
+//		}
+//		#endif
 		
 		//confirm the TReloadReg, TMode, TPrescalerReg
 		PCD_WReg(TReloadRegL, 30);
 		PCD_WReg(TReloadRegH, 0);
 		PCD_WReg(TModeReg, 0x8d);
 		PCD_WReg(TPrescalerReg, 0x3e);
-		#ifdef DEBUG_RESET
-		if(PCD_RReg(TReloadRegL) != 30){
-			printf("TReloadRegL error.\n");
-			return PCD_ERR;
-		}
-		if(PCD_RReg(TReloadRegH) != 0){
-			printf("TReloadRegH error.\n");
-			return PCD_ERR;
-		}
-		if(PCD_RReg(TModeReg) != 0x8d){
-			printf("TModeReg error.\n");
-			return PCD_ERR;
-		}
-		if(PCD_RReg(TPrescalerReg) != 0x3e){
-			printf("TPrescalerReg error.\n");
-			return PCD_ERR;
-		}
-		#endif
+//		#ifdef DEBUG_RESET
+//		if(PCD_RReg(TReloadRegL) != 30){
+//			printf("TReloadRegL error.\n");
+//			return PCD_ERR;
+//		}
+//		if(PCD_RReg(TReloadRegH) != 0){
+//			printf("TReloadRegH error.\n");
+//			return PCD_ERR;
+//		}
+//		if(PCD_RReg(TModeReg) != 0x8d){
+//			printf("TModeReg error.\n");
+//			return PCD_ERR;
+//		}
+//		if(PCD_RReg(TPrescalerReg) != 0x3e){
+//			printf("TPrescalerReg error.\n");
+//			return PCD_ERR;
+//		}
+//		#endif
 		
 		PCD_WReg(WaterLevelReg, 0x3f);
-		#ifdef DEBUG_RESET
-		if(PCD_RReg(WaterLevelReg) != 0x3f){
-			printf("WaterLevelReg error.\n");
-			return PCD_ERR;
-		}
-		#endif
+//		#ifdef DEBUG_RESET
+//		if(PCD_RReg(WaterLevelReg) != 0x3f){
+//			printf("WaterLevelReg error.\n");
+//			return PCD_ERR;
+//		}
+//		#endif
 		
 		delay_ms(10);
 		PCD_AntennaOn();
